@@ -10,7 +10,11 @@ const newJwt={
         return jwt.sign(value,secretOrPrivateKey,{expiresIn:time})
     },
     verify:(token)=>{
-        return jwt.verify(token,secretOrPrivateKey)
+        try {
+            return jwt.verify(token,secretOrPrivateKey)
+        } catch (error) {
+            return false;
+        }
     }
 }
 module.exports = newJwt

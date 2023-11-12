@@ -9,7 +9,7 @@ export default function Crud() {
       url: "api/users/add",
       method: "post",
       data: {
-        name: "testName" + +new Date(),
+        name:  "testName" + +new Date(),
         age: 18,
         password:'123'
 

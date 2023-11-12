@@ -1,12 +1,14 @@
-import { Form, Input } from "@alifd/next";
+import { Form, Input, Message } from "@alifd/next";
 import React from "react";
 import axios from "axios";
 
 export default function Login({ setCurrentRoot }) {
   const submit = async (value) => {
-    const data = await axios({ url: "api/login", method: "POST", data: value });
+    const {data} = await axios({ url: "api/login", method: "POST", data: value });
+    if (!data?.success) {
+      return Message.error('用户名或密码错误')
+    }
     setCurrentRoot("crud");
-    console.log("data", data);
   };
   return (
     <Form style={{ width: 300, margin: "100px auto" }}>
