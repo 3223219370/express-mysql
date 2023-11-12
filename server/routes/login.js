@@ -6,7 +6,6 @@ router.post("/", async function (req, res, next) {
   const { username, password } = req.body;
   const query = `SELECT * FROM mytable WHERE name = ? AND password = ? ;`;
   const [data] = await pool.query(query, [username,password]);
-  console.log('ddata-->',data);
   if (data?.length) {
     // 生成token
     const token = jwt.creat({username, password});
